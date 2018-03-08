@@ -19,7 +19,7 @@ import br.com.voffice.cinema.domain.Movie;
 public class AttributeController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private static final Map<String,String> capitais = new HashMap<>() {
+	private static final Map<String,String> capitais = new HashMap<String,String>() {
 		{
 			put("SC","Floripa");
 			put("RS","Porto Alegre");
