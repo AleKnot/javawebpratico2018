@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Cadastro de Pessoas</title>
+</head>
+<body>
+  <header>
+    <h1>Pessoas :)</h1>
+  </header>
+  <main>
+    <form>
+      <div>
+        <input id="txfId" type="hidden" value="-1" />
+      </div>
+      <div>
+        <label>Name:</label><input id="txfName" type="text" size="30" maxlength="100"/>
+      </div>
+      <div>
+        <label>B-Day:</label><input id="txfBirthDate" type="Date" value="2018-02-25"  size="12"/>
+      </div>
+      <div>
+        <label>Identification:</label><input id="txfIdentification" type="text" />
+      </div>
+      <div>
+        <label>Picture:</label><input id="txfPicture" type="url" size="80" value="https://image.freepik.com/free-icon/business-person-silhouette-wearing-tie_318-49988.jpg" />
+      </div>
+      <div>
+        <button id="btnSave" type="submit">Salvar</button>
+        <button id="btnReset" type="reset">Restaurar</button>
+      </div>
+    </form>
+    <hr>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Birht Date</th>
+          <th>Identification</th>
+          <th>Picture</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="tbodyPeoples">
+
+      </tbody>
+    </table>
+  </main>
+  <hr>
+  <footer>
+  </footer>
+  <script src="js/app.js"> </script>
+</body>
+</html>
