@@ -12,6 +12,11 @@ public class PessoaService {
 	public List<Pessoa> getPessoas(){
 		
 		return pessoaDAO.findAll();
+	}
+	
+	public void save(Pessoa pessoa) {
+		
+		pessoaDAO.save(pessoa);
 		
 	}
 	
