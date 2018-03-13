@@ -12,6 +12,7 @@ public class PessoaDAO {
 
 	public List<Pessoa> findAll() {
 
+		//verificar listagem
 		pessoas.add(new Pessoa("Mac Gayver", LocalDate.of(2008, 5, 1), 12365488,
 				"https://image.freepik.com/free-icon/business-person-silhouette-wearing-tie_318-49988.jpg"));
 		pessoas.add(new Pessoa("Rambo", LocalDate.of(2008, 5, 1), 12365488,
