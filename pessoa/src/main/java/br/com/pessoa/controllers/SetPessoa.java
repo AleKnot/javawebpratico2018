@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.pessoa.dao.PessoaDAO;
 import br.com.pessoa.domain.Pessoa;
 import br.com.pessoa.services.PessoaService;
 
@@ -45,9 +46,10 @@ public class SetPessoa extends HttpServlet {
 		
 		Pessoa pessoa = new Pessoa(name, birthDate, identification, picture);
 		
-		PessoaService pessoaService = new PessoaService();
+		//PessoaService pessoaService = new PessoaService();
+		PessoaDAO pessoaDAO = new PessoaDAO();
+		pessoaDAO.save(pessoa);
 		
-		pessoaService.save(pessoa);
 		
 		resp.setStatus(HttpServletResponse.SC_CREATED);
 	}

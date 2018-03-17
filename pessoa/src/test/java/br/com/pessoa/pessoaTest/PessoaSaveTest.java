@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import br.com.pessoa.dao.PessoaDAO;
 import br.com.pessoa.domain.Pessoa;
+import br.com.pessoa.services.PessoaService;
 import br.com.pessoa.util.JsonConverter;
 
 public class PessoaSaveTest {
@@ -28,8 +29,6 @@ public class PessoaSaveTest {
 		String output = converter.convertToJson(pessoas);
 		System.out.println(output);
 		
-
-		//pessoas.forEach(System.out::println);
 
 	}
 
