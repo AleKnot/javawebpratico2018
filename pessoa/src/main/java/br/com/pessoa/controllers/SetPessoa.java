@@ -14,6 +14,7 @@ import br.com.pessoa.dao.PessoaDAO;
 import br.com.pessoa.domain.Pessoa;
 import br.com.pessoa.services.PessoaService;
 
+@SuppressWarnings("unused")
 @WebServlet("/setPessoa")
 public class SetPessoa extends HttpServlet {
 

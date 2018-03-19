@@ -21,6 +21,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import br.com.voffice.cinema.domain.Movie;
 import br.com.voffice.cinema.services.MovieService;
 
+@SuppressWarnings("unused")
 @WebServlet("/movies")
 public class MovieController extends HttpServlet {
 

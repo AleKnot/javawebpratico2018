@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import br.com.pessoa.domain.Pessoa;
 
+@SuppressWarnings("unused")
 public class PessoaDAO {
 
 	List<Pessoa> pessoas = new ArrayList<Pessoa>();

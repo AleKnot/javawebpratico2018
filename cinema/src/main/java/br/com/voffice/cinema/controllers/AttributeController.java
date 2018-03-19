@@ -20,6 +20,11 @@ public class AttributeController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private static final Map<String,String> capitais = new HashMap<String,String>() {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		{
 			put("SC","Floripa");
 			put("RS","Porto Alegre");
@@ -28,6 +33,7 @@ public class AttributeController extends HttpServlet {
 	};
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		@SuppressWarnings("unused")
 		String uri = req.getRequestURI();
 		String uf = req.getParameter("UF");
 		String extension = req.getParameter("extension");

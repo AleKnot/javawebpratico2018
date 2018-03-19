@@ -36,7 +36,7 @@ public class PetControllerJSON extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		Map pets = petService.findAll();
+		Map<Integer, Pet> pets = petService.findAll();
 
 		ObjectMapper mapper = jsonMapperSupplier.get();
 		String json = mapper.writeValueAsString(pets);
@@ -93,6 +93,7 @@ public class PetControllerJSON extends HttpServlet {
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		InputStream inputStream = req.getInputStream();
+		
 		
 		Map<String, String> map = getParameters.apply(inputStream);
 		

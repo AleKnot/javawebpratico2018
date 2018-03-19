@@ -10,6 +10,7 @@ import br.com.pessoa.domain.Pessoa;
 import br.com.pessoa.services.PessoaService;
 import br.com.pessoa.util.JsonConverter;
 
+@SuppressWarnings("unused")
 public class PessoaSaveTest {
 
 	@Test
