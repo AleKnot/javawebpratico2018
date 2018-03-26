@@ -2,10 +2,18 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Pet List -</title>
+<title>Pet List</title>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 <body>
+<i class="material-icons" style="font-size:48px;color:red">pets</i>
 	<h1>Pet: The Complete List</h1>
+	
+	
 
 	<div id="messageArea"></div>
 	<form id="frm">
@@ -22,8 +30,9 @@
 				id="pet.field.raca"></span>
 		</fieldset>
 		<fieldset>
-			<label>Sexo: </label> <input id="pet.field.sexo" type="text" /> <span
-				id="pet.field.sexo"></span>
+		<label>Sexo: </label>
+				<label class="radio-inline"><input id="pet.field.sexo" type="radio" value="M">M</label> 
+				<label class="radio-inline"><input id="pet.field.sexo" type="radio" value="F">F</label>
 		</fieldset>
 		<fieldset>
 			<label>Data de Nascimento: </label> <input
@@ -31,52 +40,75 @@
 				id="pet.field.dataNascimento"></span>
 		</fieldset>
 		<fieldset>
-			<label>Especie: </label> <input id="pet.field.especie" type="text" />
-			<span id="pet.field.especie"></span>
+			<label>Especie: </label> 
+			
+			<label class="radio-inline"><input id="pet.field.especie" type="radio" value="Canina">Canina</label> 
+			<label class="radio-inline"><input id="pet.field.especie" type="radio" value="Felina">Felina</label>
+			<label class="radio-inline"><input id="pet.field.especie" type="radio" value="Outros">Outros</label>
+			
 		</fieldset>
 		<fieldset>
-			<label>Pelagem: </label> <input id="pet.field.pelagem" type="text" />
-			<span id="pet.field.pelagem"></span>
+			<label>Pelagem: </label> 
+			 <label for="pet.field.pelagem">Selecione um tipo de pelagem:</label>
+     				 <select class="form-control" id="pet.field.pelagem">
+        					<option>Curta</option>
+        					<option>Média</option>
+       						<option>Longa</option>
+      				</select>
+      <br>
+
 		</fieldset>
 		<fieldset>
-			<label>porte: </label> <input id="pet.field.porte" type="text" /> <span
-				id="pet.field.porte"></span>
+			<label>Porte: </label> 
+			
+			<label class="radio-inline"><input id="pet.field.porte" type="radio" value="Pequeno">Pequeno</label> 
+			<label class="radio-inline"><input id="pet.field.porte" type="radio" value="Médio">Médio</label>
+			<label class="radio-inline"><input id="pet.field.porte" type="radio" value="Grande">Grande</label>
+			
+			
+			
 		</fieldset>
 
 		<fieldset>
-			<input id="btnSave" type="button" value="Save" /> <input
-				id="btnClear" type="button" value="Clear" /> <input
-				id="btnBestPicture" type="button" value="Load Best Picture Nominees" />
+			<input id="btnSave" type="button" value="Save"
+				class="btn btn-outline-primary" /> <input id="btnClear"
+				type="button" value="Clear" class="btn btn-outline-primary" /> <input
+				id="btnBestPicture" type="button" value="Load Best Pet Picture"
+				class="btn btn-outline-primary" />
 		</fieldset>
 	</form>
 
-	<!-- Pet(String nome, int numeroTag, String raca, char sexo, LocalDate dataNascimento, String especie, String pelagem, String porte) -->
-	<table>
-		<thead>
-			<tr>
-				<th>Nome</th>
-				<th>Tag</th>
-				<th>Raça</th>
-				<th>Sexo</th>
-				<th>Data de Nascimento</th>
-				<th>Especie</th>
-				<th>Pelagem</th>
-				<th>Porte</th>
-			</tr>
-		</thead>
-		<tbody id="tblBody">
-			<tr>
-				<td>Kiwi</td>
-				<td>123456</td>
-				<td>Shitzu</td>
-				<td>M</td>
-				<td>2016-10-01</td>
-				<td>Canina</td>
-				<td>curta</td>
-				<td>pequeno</td>
-			</tr>
-		<tbody>
-	</table>
+
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Tag</th>
+					<th>Raça</th>
+					<th>Sexo</th>
+					<th>Data de Nascimento</th>
+					<th>Especie</th>
+					<th>Pelagem</th>
+					<th>Porte</th>
+					<th>Opções</th>
+				</tr>
+			</thead>
+			<tbody id="tblBody">
+				<tr>
+					<td>Kiwi</td>
+					<td>123456</td>
+					<td>Shitzu</td>
+					<td>M</td>
+					<td>2016-10-01</td>
+					<td>Canina</td>
+					<td>curta</td>
+					<td>pequeno</td>
+				</tr>
+			<tbody>
+		</table>
+
+	</div>
 	<script type="text/javascript" src="/js/functions.js"></script>
 	<script type="text/javascript" src="/js/pets-uris.js"></script>
 	<script type="text/javascript" src="/js/pets-elements.js"></script>
