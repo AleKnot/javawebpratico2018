@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Oscar 2018: Posters</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+</head>
+<body>
+	<h1>Oscar 2018: Posters</h1>
+	<div class="container">
+		<div id="messageArea"></div>
+		<h1>Upload</h1>
+		<form method="post" enctype="multipart/form-data"
+			action="api/servlets/movies/posters">
+			<div class="form-group">
+				<input type="file" name="poster" multiple="multiple"
+					accept="image/*">
+			</div>
+			<fieldset class="form-group">
+				<input type="submit" class="btn btn-primary form-control" value="Send">
+			</fieldset>
+		</form>
+		<select id="postersSelect">
+		</select>
+		<div class="text-center">
+		<img id="posterImage" class="img-fluid img-thumbnail"/>
+		<a id="posterLink" href="#">Download</a>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="posters-uris.js?sdfsdsds"></script>
+
+	<script type="text/javascript">
+		var postersSelect = document.getElementById("postersSelect");
+		var posterImage = document.getElementById("posterImage");
+		var posterLink = document.getElementById("posterLink");
+		var findPosters = () => {
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", postersUri,true);
+		xhr.onload = (e) => {
+			console.log(e.target.responseText);
+			var posters = JSON.parse(e.target.responseText);
+			if (posters){
+				posters.forEach(p => postersSelect.appendChild(new Option(p,p)));
+				showPoster();
+			}
+		};
+		xhr.send();
+		};
+		var downloadPoster = () => {
+			var selectedPoster = postersSelect.options[postersSelect.selectedIndex];
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", postersDownloadUri+selectedPoster.value, true);
+			xhr.onload = (e) => {
+				var contents = e.target.responseText;
+				console.log(e.target.responseText);
+				posterImage.src = contents;
+			};
+			xhr.send();
+		};
+		var showPoster = () => {
+			var selectedPoster = postersSelect.options[postersSelect.selectedIndex];
+			posterImage.src = POSTER_SERVER+"/"+selectedPoster.value;
+		};
+		postersSelect.addEventListener("change", showPoster);
+		posterLink.addEventListener("click", downloadPoster);
+		addEventListener("load", findPosters());
+	</script>
+</body>
+</html>

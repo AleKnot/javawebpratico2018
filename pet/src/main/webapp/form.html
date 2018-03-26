@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Pet List -</title>
+</head>
+<body>
+	<h1>Pet: The Complete List</h1>
+
+	<div id="messageArea"></div>
+	<form id="frm">
+		<fieldset>
+			<label>Nome: </label> <input id="pet.field.nome" type="text" /> <span
+				id="pet.field.nome"></span>
+		</fieldset>
+		<fieldset>
+			<label>Tag: </label> <input id="pet.field.numeroTag" type="text" />
+			<span id="pet.field.numeroTag"></span>
+		</fieldset>
+		<fieldset>
+			<label>Raça: </label> <input id="pet.field.raca" type="text" /> <span
+				id="pet.field.raca"></span>
+		</fieldset>
+		<fieldset>
+			<label>Sexo: </label> <input id="pet.field.sexo" type="text" /> <span
+				id="pet.field.sexo"></span>
+		</fieldset>
+		<fieldset>
+			<label>Data de Nascimento: </label> <input
+				id="pet.field.dataNascimento" type="date" /> <span
+				id="pet.field.dataNascimento"></span>
+		</fieldset>
+		<fieldset>
+			<label>Especie: </label> <input id="pet.field.especie" type="text" />
+			<span id="pet.field.especie"></span>
+		</fieldset>
+		<fieldset>
+			<label>Pelagem: </label> <input id="pet.field.pelagem" type="text" />
+			<span id="pet.field.pelagem"></span>
+		</fieldset>
+		<fieldset>
+			<label>porte: </label> <input id="pet.field.porte" type="text" /> <span
+				id="pet.field.porte"></span>
+		</fieldset>
+
+		<fieldset>
+			<input id="btnSave" type="button" value="Save" /> <input
+				id="btnClear" type="button" value="Clear" /> <input
+				id="btnBestPicture" type="button" value="Load Best Picture Nominees" />
+		</fieldset>
+	</form>
+
+	<!-- Pet(String nome, int numeroTag, String raca, char sexo, LocalDate dataNascimento, String especie, String pelagem, String porte) -->
+	<table>
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Tag</th>
+				<th>Raça</th>
+				<th>Sexo</th>
+				<th>Data de Nascimento</th>
+				<th>Especie</th>
+				<th>Pelagem</th>
+				<th>Porte</th>
+			</tr>
+		</thead>
+		<tbody id="tblBody">
+			<tr>
+				<td>Kiwi</td>
+				<td>123456</td>
+				<td>Shitzu</td>
+				<td>M</td>
+				<td>2016-10-01</td>
+				<td>Canina</td>
+				<td>curta</td>
+				<td>pequeno</td>
+			</tr>
+		<tbody>
+	</table>
+	<script type="text/javascript" src="/js/functions.js"></script>
+	<script type="text/javascript" src="/js/pets-uris.js"></script>
+	<script type="text/javascript" src="/js/pets-elements.js"></script>
+	<script type="text/javascript" src="/js/pets-controller.js"></script>
+</body>
+</html>
