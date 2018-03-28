@@ -1,59 +1,74 @@
 package br.com.pet.controller;
 
-import java.io.BufferedOutputStream;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
+import java.io.InputStream;
 import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import org.apache.commons.io.FileUtils;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 
-@MultipartConfig
-@WebServlet("/api/servlets/movies/posters")
-public class PosterController extends HttpServlet {
+
+@Controller
+@MultipartConfig(
+        fileSizeThreshold   = 1024 * 1024 * 10,  // 10 MB
+        maxFileSize         = 1024 * 1024 * 10, // 10 MB
+        maxRequestSize      = 1024 * 1024 * 15, // 15 MB
+        location            = "C:\\Uploads\\"
+)
+public class PosterController{
 	
 // http://www.pablocantero.com/blog/2010/09/29/upload-com-spring-mvc/
 	
 	
 	private static final long serialVersionUID = 1L;
 	
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String download = req.getParameter("download");
-		if (download != null) {
-			String path = getPosterPath();
-			File folder = new File(path);
-			File file = new File(folder, download);
-			byte[] contents = Files.readAllBytes(file.toPath());
-			ServletOutputStream outputStream = resp.getOutputStream();
-			BufferedOutputStream bos = new BufferedOutputStream(outputStream, 4096);
-			bos.write(contents);
-		} else {
-		List<String> posters = Files.list(Paths.get(getPosterPath())).filter(PetsControllerFunctions.imageExtensionPredicate).map(p -> p.getFileName().toString()).sorted().collect(Collectors.toList());
-		resp.getWriter().write(PetsControllerFunctions.toJSON(posters));
+	
+	@GetMapping("api/servlets/movies/posters")
+	public void getPosters() {
+		
+		System.out.println("Entrou no Posters");
+	}
+	
+	
+	@PostMapping("api/servlets/movies/posters")
+	public String postPosters(@RequestPart("image") MultipartFile multipartFile) {
+		
+		
+		String name = multipartFile.getOriginalFilename();
+		String folder = "C:\\Uploads\\";
+		
+		System.out.println(name);
+		System.out.println("Entrou no POST Posters");
+		
+		byte[] byteArr;
+		try {
+			byteArr = multipartFile.getBytes();
+			InputStream inputStream = new ByteArrayInputStream(byteArr);
+			
+			//InputStream initialStream = FileUtils.openInputStream(new File(folder+name));
+			
+			File targetFile = new File(folder+name);
+						
+			FileUtils.copyInputStreamToFile(inputStream, targetFile);
+			
+			return "redirect:/picture.html";
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		return "redirect:/picture.html";
+		
+		
+		
+		
+		
+		
 	}
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Collection<Part> parts = req.getParts();
-		parts.stream().forEach(p -> PetsControllerFunctions.savePart(getPosterPath(), p));
-		resp.setStatus(HttpServletResponse.SC_ACCEPTED);
-		resp.sendRedirect(req.getRequestURI());
-	}
-
-	private final String getPosterPath() {
-		return this.getServletContext().getInitParameter("poster_path");
-	}
+	
 
 }
